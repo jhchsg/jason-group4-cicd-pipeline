@@ -16,7 +16,7 @@ functions:
            path: /
            method: get
      environment: 
-       ACCESS_KEY: ${ssm:group4-access-key}
+       ACCESS_KEY: ${ssm:jason-parameter-150823}
      
 #plugins:
 #  - serverless-offline
