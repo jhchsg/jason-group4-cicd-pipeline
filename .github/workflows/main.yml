@@ -40,11 +40,18 @@ jobs:
       - name: Run installation of dependencies commands
         run: npm install
       - name: Run audit
-        run: npm audit        
+        run: npm audit
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor        
 
   Dokerize:
     runs-on: ubuntu-latest
-    needs: package-scan
+    needs: package-scan 
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
